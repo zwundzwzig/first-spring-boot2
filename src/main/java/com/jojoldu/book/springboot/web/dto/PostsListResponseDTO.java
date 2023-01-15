@@ -18,5 +18,4 @@ public class PostsListResponseDTO {
     this.author = entity.getAuthor();
     this.modifiedDate = entity.getModifiedDate();
   }
-
 }

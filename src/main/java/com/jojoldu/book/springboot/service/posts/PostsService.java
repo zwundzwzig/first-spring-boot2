@@ -2,6 +2,7 @@ package com.jojoldu.book.springboot.service.posts;
 
 import com.jojoldu.book.springboot.domain.posts.Posts;
 import com.jojoldu.book.springboot.domain.posts.PostsRepository;
+import com.jojoldu.book.springboot.web.dto.PostsListResponseDTO;
 import com.jojoldu.book.springboot.web.dto.PostsResponseDTO;
 import com.jojoldu.book.springboot.web.dto.PostsSaveRequestDTO;
 import com.jojoldu.book.springboot.web.dto.PostsUpdateRequestDTO;
@@ -47,12 +48,10 @@ public class PostsService {
 
     return new PostsResponseDTO(entity);
   }
-
   @Transactional(readOnly = true)
-  public List<PostsResponseDTO> findAllDesc() {
+  public List<PostsListResponseDTO> findAllDesc() {
     return postsRepository.findAllDesc().stream()
-            .map(PostsResponseDTO::new)
+            .map(PostsListResponseDTO::new)
             .collect(Collectors.toList());
   }
-
 }

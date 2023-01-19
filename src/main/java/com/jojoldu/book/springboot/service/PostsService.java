@@ -1,4 +1,4 @@
-package com.jojoldu.book.springboot.service.posts;
+package com.jojoldu.book.springboot.service;
 
 import com.jojoldu.book.springboot.domain.posts.Posts;
 import com.jojoldu.book.springboot.domain.posts.PostsRepository;
@@ -48,6 +48,7 @@ public class PostsService {
 
     return new PostsResponseDTO(entity);
   }
+
   @Transactional(readOnly = true)
   public List<PostsListResponseDTO> findAllDesc() {
     return postsRepository.findAllDesc().stream()

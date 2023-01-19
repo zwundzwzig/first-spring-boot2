@@ -1,7 +1,5 @@
-package com.jojoldu.book.springboot.web.domain.posts;
+package com.jojoldu.book.springboot.domain.posts;
 
-import com.jojoldu.book.springboot.domain.posts.Posts;
-import com.jojoldu.book.springboot.domain.posts.PostsRepository;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,16 +25,15 @@ public class PostsRepositoryTest {
   }
 
   @Test
-  public void createBoard() {
+  public void 게시글저장_불러오기() {
     //given
     String title = "테스트 게시글";
     String content = "테스트 본문";
-//    String author = "zwundzwzig@github.com";
 
     postsRepository.save(Posts.builder()
             .title(title)
             .content(content)
-            .author("zwundzwzig@gmail.com")
+            .author("jojoldu@gmail.com")
             .build());
 
     //when
@@ -49,7 +46,7 @@ public class PostsRepositoryTest {
   }
 
   @Test
-  public void BaseTimeEntityEnroll() {
+  public void BaseTimeEntity_등록() {
     //given
     LocalDateTime now = LocalDateTime.of(2019, 6, 4, 0, 0, 0);
     postsRepository.save(Posts.builder()
@@ -57,18 +54,13 @@ public class PostsRepositoryTest {
             .content("content")
             .author("author")
             .build());
-
     //when
     List<Posts> postsList = postsRepository.findAll();
 
     //then
     Posts posts = postsList.get(0);
 
-    System.out.println(">>>>>>> createdDate = "
-            + posts.getCreatedDate()
-            + ", modifiedDate = "
-            + posts.getModifiedDate()
-    );
+    System.out.println(">>>>>>>>> createDate=" + posts.getCreatedDate() + ", modifiedDate=" + posts.getModifiedDate());
 
     assertThat(posts.getCreatedDate()).isAfter(now);
     assertThat(posts.getModifiedDate()).isAfter(now);

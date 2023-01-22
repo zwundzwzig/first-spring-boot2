@@ -4,4 +4,6 @@
 build
 .DS_Store
 application-oauth.properties
+application-real-db.properties
 src/main/resources/application-oauth.properties
+src/main/resources/application-real-db.properties
